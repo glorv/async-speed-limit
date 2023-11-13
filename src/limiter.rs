@@ -72,9 +72,7 @@ impl<I> Bucket<I> {
         self.speed_limit = new_speed_limit;
         if new_speed_limit.is_finite() {
             let new_capacity = self.capacity();
-            if old_capacity.is_finite() {
-                self.value += new_capacity - old_capacity;
-            } else {
+            if old_capacity.is_infinite() {
                 self.value = new_capacity;
             }
         }
